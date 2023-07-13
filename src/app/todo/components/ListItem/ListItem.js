@@ -1,7 +1,5 @@
 import React from "react";
 import './ListItem.css';
-import {AiFillEdit} from 'react-icons/Ai'
-import {BiSolidTrash} from 'react-icons/Bi'
 
 export const ListItem = ({index, item, deleteItem, setIndex, editItem, progress }) => {
 
