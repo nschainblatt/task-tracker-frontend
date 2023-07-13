@@ -91,7 +91,7 @@
 }
 
 .addItems input::placeholder {
-    text-align: center;
+    text-align: left;
     font-size: 1.2rem;
 }
 

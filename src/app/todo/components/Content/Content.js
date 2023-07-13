@@ -138,7 +138,7 @@ export const Content = ({ list, listData, setData, doneData, setDoneData, routin
                         </Scroll>
                     </div>
                     <div className="addItems">
-                            <input onKeyDown={addItemAfterKeyDown} onChange={handleChange} placeholder="What needs to get done today?" type="text" id="addItems"/>
+                            <input onKeyDown={addItemAfterKeyDown} onChange={handleChange} placeholder="To do..." type="text" id="addItems"/>
                             <br/>
                             <div className="addSaveButtons">
                                 <button onClick={addItem} className="addButton" type="button">Add Item</button>
