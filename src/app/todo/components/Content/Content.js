@@ -154,8 +154,8 @@ export const Content = ({ list, listData, setData, doneData, setDoneData, routin
                     <br />
                     <p>Drag to complete</p>
                     <br />
-                    <p> <box-icon size="xs" color="rgb(188, 187, 187)" type='solid' name='edit-alt'></box-icon> to edit </p>
-                    <p> <box-icon size="xs" color="rgb(188, 187, 187)" name='trash' type='solid' ></box-icon> to delete</p>
+                    <p> &gt; to edit </p>
+                    <p> &lt; to delete</p>
                 </div>
                 <button className="help-button" type="button" onClick={showHelp}>
                     <p>?</p>
