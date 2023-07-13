@@ -1,6 +1,3 @@
-import {AiFillEdit} from 'react-icons/Ai'
-import {BiSolidTrash} from 'react-icons/Bi'
-
 export const DoneItem = ({ index, item, deleteItem, editItem, progress }) => {
 
     return (
@@ -8,11 +5,13 @@ export const DoneItem = ({ index, item, deleteItem, editItem, progress }) => {
             <p id={toString(index)} className="item" 
             >
                 <button className="editButton" onClick={()=>editItem(index, progress)}>
-                    <AiFillEdit size={20}/>
+                    &gt;
+                    {/* <box-icon color="rgb(188, 187, 187)" type='solid' name='edit-alt'></box-icon> */}
                 </button>
                 {item}
                 <button value={item} onClick={()=>{deleteItem(index)}} className="deleteButton noDeco" type="button">
-                    <BiSolidTrash size={20}/>
+                    &lt;
+                    {/* <box-icon color="rgb(188, 187, 187)" name='trash' type='solid' ></box-icon> */}
                 </button> 
             </p>
         </div>

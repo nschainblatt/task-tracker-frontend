@@ -19,11 +19,11 @@ export const ListItem = ({index, item, deleteItem, setIndex, editItem, progress 
                 onDragStart={(e)=>dragStarted(e,index)}
             >
                 <button className="editButton" onClick={()=>editItem(index, progress)}>
-                    <AiFillEdit size={20}/>
+                    &gt;
                 </button>
                 {item}
                 <button value={item} onClick={()=>{deleteItem(index)}} className="deleteButton noDeco" type="button">
-                    <BiSolidTrash size={20}/>
+                    &lt;
                 </button> 
             </p>
         </div>
