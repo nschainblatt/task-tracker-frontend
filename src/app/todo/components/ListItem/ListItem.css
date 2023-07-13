@@ -1,0 +1,45 @@
+/* To Do Items */
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+    padding: .5rem 0;
+    background: rgb(24, 24, 24);
+    box-shadow: 0 0 0.5rem black;
+    margin: 0 1rem;
+    transition: 0.5s ease;
+}
+
+.item:hover {
+    box-shadow: 0 0 0.5rem rgb(188, 187, 187);
+}   
+
+.editButton {
+    position: relative;
+    background-color: transparent;
+    border-radius: 0.5rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 1rem rgb(20, 20, 20);
+    transition: 0.5s ease;
+}
+
+.editButton:hover {
+    box-shadow: 0 0 1rem black;
+}
+
+.deleteButton {
+    margin-right: 0.5rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 1rem rgb(20, 20, 20);
+    transition: 0.5s ease;
+}
+
+.deleteButton:hover {
+    box-shadow: 0 0 1rem black;
+}

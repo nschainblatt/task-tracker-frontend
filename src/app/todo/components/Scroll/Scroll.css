@@ -1,0 +1,7 @@
+.scroll {
+    padding: 3rem;
+}
+
+div::-webkit-scrollbar {
+    display: none;
+}

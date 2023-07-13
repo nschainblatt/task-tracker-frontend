@@ -1,0 +1,9 @@
+.App {
+  color: rgb(188, 187, 187);
+  background-color: rgb(31, 31, 31);
+  display: grid;
+  grid-template-columns: 0.23fr 1fr;
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow-y: hidden;
+}

@@ -1,0 +1,52 @@
+/* Navbar  */
+.navigation {
+    background-color: rgb(24, 24, 24);
+    display: grid;
+    grid-template-rows: 0.1fr 0.2fr 0.2fr 0.2fr 1fr;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.2rem;
+}
+
+.list1, .list2, .list3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation h2 {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem black;
+    transition: 0.5s ease;
+}
+
+.navigation h2:hover {
+    background-color: rgb(20, 20, 20);
+    box-shadow: 0 0 0.5rem  rgb(188, 187, 187);
+    cursor: pointer;
+}
+
+.great {
+    display: grid;
+    grid-template-rows: 1fr 0.1fr;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+.great h3 {
+    padding-bottom: 1rem;
+}
+
+.time {
+    color: rgb(188, 187, 187);
+    border-radius: 0.5rem;
+    padding: 1rem 2rem 1rem 2rem;
+    box-shadow: 0 0 0.5rem black;
+}
