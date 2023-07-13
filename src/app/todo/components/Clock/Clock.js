@@ -28,7 +28,7 @@ export const Clock = () => {
         const hour = determineHour(date.getHours());
         const minute = determineLengthTime(String(date.getMinutes()));
         const seconds = determineLengthTime(String(date.getSeconds()));
-        setTime(hour[0] + ":" + minute + " " + hour[1]);
+        setTime(hour[0] + ":" + minute);
     }
 
     useEffect(() => {

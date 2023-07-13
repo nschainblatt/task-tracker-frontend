@@ -25,6 +25,7 @@
     box-shadow: 0 0 1rem rgb(20, 20, 20);
     transition: 0.5s ease;
     font-size: 1.5rem;
+    color: rgb(188, 187, 187);
 }
 
 .editButton:hover {
@@ -40,6 +41,7 @@
     box-shadow: 0 0 1rem rgb(20, 20, 20);
     transition: 0.5s ease;
     font-size: 1.5rem;
+    color: rgb(188, 187, 187);
 }
 
 .deleteButton:hover {
