@@ -29,7 +29,6 @@ export const Register = ({routing}) => {
                 password: password
             })
         }).then(res => res.json()).then(data => {
-            console.log(data);
             if (data.status) {
                 routing('signin')
             }
