@@ -45,7 +45,7 @@ export const Register = ({routing}) => {
                         <input onChange={submitName} type="text" placeholder="Enter your name" required />
                     </div>
                     <div className="input-box">
-                        <input onChange={submitEmail} type="text" placeholder="Enter your email" required />
+                        <input onChange={submitEmail} type="email" placeholder="Enter your email" required />
                     </div>
                     <div className="input-box">
                         <input onChange={submitPassword} type="password" placeholder="Create password" required />
