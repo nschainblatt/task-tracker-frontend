@@ -22,7 +22,7 @@ export const Signin = ({ routing, setEmail, setPassword, email, password, setDat
                 setDoneData("List #3", data.status.doneData.doneData3);
                 routing('list1');
             }
-        });
+        }).catch(() => alert('Incorrect username or password.'));
     }
 
     return (

@@ -11,6 +11,8 @@ input:-webkit-autofill:active{
 /* Sign in and register styling */
 .signin {
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -91,6 +93,7 @@ form .text h3{
  color: rgb(188, 187, 187);
  width: 100%;
  text-align: center;
+ margin: 0;
 }
 
 form .text h3 a{
@@ -101,4 +104,59 @@ form .text h3 a{
 
 form .text h3 a:hover{
   text-decoration: underline;
+}
+
+/* Password Requirments */
+#message {
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  background: rgb(31, 31, 31);
+  padding: 34px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  color: rgb(188, 187, 187);
+}
+
+#message h3 {
+  padding-bottom: 1rem;
+}
+
+#message h2 {
+  text-align: center;
+  position: relative;
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(188, 187, 187);
+}
+
+#message form {
+  margin-top: 30px;
+}
+
+#message form .input-box {
+  height: 52px;
+  margin: 18px 0;
+}
+
+.valid {
+  color: #00eeff;
+  padding-left: 1rem;
+}
+
+.valid:before {
+  position: relative;
+  left: -1rem;
+  content: "✔";
+}
+
+.invalid {
+  color: rgb(188, 187, 187);
+  padding-left: 1rem;
+}
+
+.invalid:before {
+  position: relative;
+  left: -1rem;
+  content: "✖";
 }

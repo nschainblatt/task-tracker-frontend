@@ -5,6 +5,7 @@ export const Register = ({routing}) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [valid, setValid] = useState(false);
 
     const submitName = (e) => {
         setName(e.target.value);
@@ -20,19 +21,72 @@ export const Register = ({routing}) => {
 
     const onSubmitRegister = (e) => {
         e.preventDefault()
-        fetch('https://to-do-server.adaptable.app/register', {
-            method: 'put',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                password: password
+        if (valid) {
+            console.log('valid');
+            fetch('https://to-do-server.adaptable.app/register', {
+                method: 'put',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password
+                })
+            }).then(res => res.json()).then(data => {
+                if (data.status) {
+                    routing('signin')
+                }
             })
-        }).then(res => res.json()).then(data => {
-            if (data.status) {
-                routing('signin')
+        }
+    }
+
+    const validate_password = (e) => {
+        // lower
+        const letter = document.querySelector('#letter');
+        const lowerCaseLetters = /[a-z]/g;
+        if (e.target.value.match(lowerCaseLetters)) {
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+        } else {
+            letter.classList.remove('valid');
+            letter.classList.add('invalid');
+        }
+        // upper
+        const upper = document.querySelector('#capital');
+        const upperCaseLetters = /[A-Z]/g;
+        if (e.target.value.match(upperCaseLetters)) {
+            upper.classList.remove("invalid");
+            upper.classList.add("valid");
+        } else {
+            upper.classList.remove('valid');
+            upper.classList.add('invalid');
+        }
+        // numbers
+        const number = document.querySelector('#number');
+        const numbers = /[0-9]/g;
+        if (e.target.value.match(numbers)) {
+            number.classList.remove("invalid");
+            number.classList.add("valid");
+        } else {
+            number.classList.remove('valid');
+            number.classList.add('invalid');
+        }
+        // length
+        const length = document.querySelector('#length');
+        const minLength = 8;
+        if (e.target.value.length >= minLength) {
+            length.classList.remove("invalid");
+            length.classList.add("valid");
+        } else {
+            length.classList.remove('valid');
+            length.classList.add('invalid');
+        }
+        if (letter.classList.contains('valid') && 
+            upper.classList.contains('valid') && 
+            number.classList.contains('valid') && 
+            length.classList.contains('valid')) {
+                setValid(true);
             }
-        })
+
     }
 
     return (
@@ -48,7 +102,9 @@ export const Register = ({routing}) => {
                         <input onChange={submitEmail} type="email" placeholder="Enter your email" required />
                     </div>
                     <div className="input-box">
-                        <input onChange={submitPassword} type="password" placeholder="Create password" required />
+                        <input onKeyUp={validate_password} onChange={submitPassword} 
+                               type="password" placeholder="Create password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
                     </div>
                     <div className="input-box button">
                         <input onClick={onSubmitRegister} type="Submit" value="Register Now" readOnly/>
@@ -59,6 +115,15 @@ export const Register = ({routing}) => {
                     </form>
                 </div>
             </div>
+
+            <div id='message'>
+                <h3>Password must contain the following:</h3>
+                <p id='letter' className='invalid'>An <b>lowercase</b> letter</p>
+                <p id='capital' className='invalid'>An <b>uppercase</b> letter</p>
+                <p id='number' className='invalid'>An <b>number</b></p>
+                <p id='length' className='invalid'>A Minimum of <b>8 characters</b></p>
+            </div>
+
         </div>
     );
 }
