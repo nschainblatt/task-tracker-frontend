@@ -101,7 +101,6 @@ class App extends Component {
     const { route, list, listData1, listData2, listData3, doneData1, doneData2, doneData3, email, password } = this.state;
     return (
       <div>
-        {this.state.name}
         {route === 'signin'
           ? <Signin list={list} setDoneData={this.setDoneData} setData={this.setData} routing={this.routing} setEmail={this.setEmail} setPassword={this.setPassword} email={email} password={password}/>
           : route === 'register'

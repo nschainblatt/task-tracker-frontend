@@ -1,28 +1,42 @@
+import { useState } from 'react'
 import './Signin.css'
 
 export const Signin = ({ routing, setEmail, setPassword, email, password, setData, setDoneData }) => {
 
-    const onSubmitSignIn = (e) => {
+    const [loading, setLoading] = useState(null);
+
+    const onSubmitSignIn = async (e) => {
         e.preventDefault()
-        fetch('https://to-do-server.adaptable.app/signin', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                email: email,
-                password: password
-            })
-        }).then(res => res.json()).then(data => {
-            
-            if (data.status) {
-                setData("List #1", data.status.listData.listData1);
-                setData("List #2", data.status.listData.listData2);
-                setData("List #3", data.status.listData.listData3);
-                setDoneData("List #1", data.status.doneData.doneData1);
-                setDoneData("List #2", data.status.doneData.doneData2);
-                setDoneData("List #3", data.status.doneData.doneData3);
-                routing('list1');
+        try {
+            setLoading(true);
+            const response = await fetch('https://to-do-server.adaptable.app/signin', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            });
+            const data = await response.json();
+            if (data) {
+                if (data.status) {
+                    setData("List #1", data.status.listData.listData1);
+                    setData("List #2", data.status.listData.listData2);
+                    setData("List #3", data.status.listData.listData3);
+                    setDoneData("List #1", data.status.doneData.doneData1);
+                    setDoneData("List #2", data.status.doneData.doneData2);
+                    setDoneData("List #3", data.status.doneData.doneData3);
+                    routing('list1');
+                } else {
+                    alert('Incorrect username or password.');
+                    setLoading(null);
+                }
             }
-        }).catch(() => alert('Incorrect username or password.'));
+        } catch (e) {
+            console.log(e);
+            alert('Incorrect username or password.');
+            setLoading(null);
+         }
     }
 
     return (
@@ -45,6 +59,7 @@ export const Signin = ({ routing, setEmail, setPassword, email, password, setDat
                         </div>
                     </form>
                 </div>
+                {loading ? <p style={{textAlign:'center'}}>Loading</p> : <p></p>}
             </div>
         </div>
     );

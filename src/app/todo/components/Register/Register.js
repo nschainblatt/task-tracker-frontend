@@ -6,6 +6,7 @@ export const Register = ({routing}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [valid, setValid] = useState(false);
+    const [loading, setLoading] = useState(null);
 
     const submitName = (e) => {
         setName(e.target.value);
@@ -19,23 +20,30 @@ export const Register = ({routing}) => {
         setPassword(e.target.value);
     }
 
-    const onSubmitRegister = (e) => {
+    const onSubmitRegister = async (e) => {
         e.preventDefault()
         if (valid) {
-            console.log('valid');
-            fetch('https://to-do-server.adaptable.app/register', {
-                method: 'put',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    password: password
-                })
-            }).then(res => res.json()).then(data => {
+            try {
+                setLoading(true);
+                const response = await fetch('https://to-do-server.adaptable.app/register', {
+                    method: 'put',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        password: password
+                    })
+                });
+                const data = await response.json();
+
                 if (data.status) {
-                    routing('signin')
+                    routing('signin');
                 }
-            })
+            } catch (e) {
+                console.log(e);
+                alert('Error registering. Email already in use.')
+                setLoading(null);
+            }
         }
     }
 
@@ -86,7 +94,6 @@ export const Register = ({routing}) => {
             length.classList.contains('valid')) {
                 setValid(true);
             }
-
     }
 
     return (
@@ -115,7 +122,6 @@ export const Register = ({routing}) => {
                     </form>
                 </div>
             </div>
-
             <div id='message'>
                 <h3>Password must contain the following:</h3>
                 <p id='letter' className='invalid'>An <b>lowercase</b> letter</p>
@@ -123,7 +129,7 @@ export const Register = ({routing}) => {
                 <p id='number' className='invalid'>An <b>number</b></p>
                 <p id='length' className='invalid'>A Minimum of <b>8 characters</b></p>
             </div>
-
+            {loading ? <p style={{textAlign:'center'}}>Loading</p> : <p></p>}
         </div>
     );
 }
